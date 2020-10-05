@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "前端资料",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaoyao1987/Blog.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yaoyao1987/Blog/issues"
+  },
+  "homepage": "https://github.com/yaoyao1987/Blog#readme",
+  "devDependencies": {
+    "eslint": "^7.7.0"
+  }
+}
