@@ -37,7 +37,10 @@ const unique = arr => {
 }
 
 // 5. 利用filter
-const unique = arr => arr.filter((item, index) => arr.indexOf(item) === index)
+const unique = arr => {
+  const seen = new Map();
+  return arr.filter((item) => !seen.has(item) && seen.set(item, true))
+}
 
 // 6. 利用map
 const unique = arr => {

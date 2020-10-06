@@ -1,5 +1,3 @@
-const { reject } = require("lodash");
-
 class requestQueue {
   constructor(max) {
     this.taskQueue = [];

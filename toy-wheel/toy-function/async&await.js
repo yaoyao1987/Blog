@@ -1,5 +1,3 @@
-const { reject } = require("lodash");
-
 function toyAsyncToGenerator(fn) {
   return function () {
     let that = this;

@@ -1,3 +1,9 @@
+/**
+* 判断left是不是right类型的对象
+* @param {*} left
+* @param {*} right
+* @return {Boolean}
+*/
 function toyInstanceOf(left, right) {
   let proto = left.__proto__;
   let prototype = right.prototype;

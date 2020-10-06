@@ -10,6 +10,7 @@
 //     return fn.apply(this, newArgs)
 //   }
 // }
+
 // ES6
 // ======================================================
 const curry = (fn, arr = []) => (...args) => ((arg) => (arg.length === fn.length ? fn(...arg) : curry(fn, arg)))([...arr, ...args])
