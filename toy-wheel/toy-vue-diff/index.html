@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>toy vue diff</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import { createElement, render, patch } from "./vdom/index.js";
+      let app = document.querySelector("#app");
+      let vnode = createElement(
+        "div",
+        {},
+        createElement("li", { style: { background: "red" }, key: "A" }, "A"),
+        createElement("li", { style: { background: "yellow" }, key: "B" }, "B"),
+        createElement("li", { style: { background: "blue" }, key: "C" }, "C"),
+        createElement("li", { style: { background: "green" }, key: "D" }, "D")
+      );
+      render(vnode, app);
+      console.log("vnode :>> ", vnode);
+
+      let newVnode = createElement(
+        "div",
+        {},
+        createElement("li", { style: { background: "green" }, key: "D" }, "D1"),
+        createElement("li", { style: { background: "red" }, key: "A" }, "A"),
+        createElement(
+          "li",
+          { style: { background: "yellow" }, key: "B" },
+          "B1"
+        ),
+        createElement("li", { style: { background: "blue" }, key: "C" }, "C1")
+      );
+
+      setTimeout(() => {
+        patch(vnode, newVnode);
+      }, 1000);
+    </script>
+  </body>
+</html>
