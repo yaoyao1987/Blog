@@ -2,50 +2,50 @@
 
 ### 1. 盒模型
 
-### 2. BFC、IFC、GFC、FFC
+### 2. `BFC`、IFC、GFC、FFC
 
-**BFC(Block formatting context)：块级格式化上下文**，是一个独立的渲染区域，让处于 BFC 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
+**BFC(Block formatting context)：块级格式化上下文**，是一个独立的渲染区域，让处于 `BFC` 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
 
 - 触发条件：
 
   - 根元素
-  - 浮动元素（float 属性不为 none）
-  - position 为 absolute 或 fixed
-  - overflow 不为 visible 的块元素
-  - display 为 inline-block、table-cell、table-caption
+  - 浮动元素（`float` 属性不为 `none`）
+  - `position` 为 `absolute` 或 `fixed`
+  - `overflow` 不为 `visible` 的块元素
+  - `display` 为 `inline-block`、`table-cell`、`table-caption`
 
-- BFC 布局规则
+- `BFC` 布局规则
 
-  - 属于同一个 BFC 的两个相邻 Box 垂直排列
-  - BFC 内，两个相邻 Box 的垂直距离由 margin 属性决定。属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠
-  - BFC 中子元素的 margin box 的左边，与包含块(BFC)border box 的左边相接触(子元素 absolute 除外)
-  - BFC 的区域不会与 float 的元素区域重叠
-  - 计算 BFC 的高度时，浮动子元素也参与计算
+  - 属于同一个 `BFC` 的两个相邻 `Box` 垂直排列
+  - `BFC` 内，两个相邻 `Box` 的垂直距离由 `margin` 属性决定。属于同一个 `BFC` 的两个相邻 `Box` 的 `margin` 会发生重叠
+  - `BFC` 中子元素的 `margin` `Box` 的左边，与包含块(`BFC`)border `Box` 的左边相接触(子元素 `absolute` 除外)
+  - `BFC` 的区域不会与 `float` 的元素区域重叠
+  - 计算 `BFC` 的高度时，浮动子元素也参与计算
   - 文字层不会被浮动蹭覆盖，环绕于周围
 
-- BFC 应用：
+- `BFC` 应用：
 
-  - 防止 margin 重叠 (同一个 BFC 内的两个两个相邻 Box 的 margin 会发生重叠，触发生成两个 BFC，即不会重叠)
-  - 清除内部浮动(创建一个新的 BFC，因为根据 BFC 的规则，计算 BFC 的高度时，浮动元素也参与计算)
-  - 自适应多栏布局(BFC 的区域不会与 float box 重叠。因此可以触发生成一个新的 BFC)
+  - 防止 `margin` 重叠 (同一个 `BFC` 内的两个两个相邻 `Box` 的 `margin` 会发生重叠，触发生成两个 `BFC`，即不会重叠)
+  - 清除内部浮动(创建一个新的 `BFC`，因为根据 `BFC` 的规则，计算 `BFC` 的高度时，浮动元素也参与计算)
+  - 自适应多栏布局(`BFC` 的区域不会与 `float` `Box` 重叠。因此可以触发生成一个新的 `BFC`)
 
 **IFC（Inline formatting contexts）：内联格式上下文**
-IFC 的 line box（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的 padding/margin 影响))IFC 中的 line box 一般左右都贴紧整个 IFC，但是会因为 float 元素而扰乱
+`IFC` 的 `line Box`（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的 `padding/margin` 影响))IFC 中的 line `Box` 一般左右都贴紧整个 `IFC`，但是会因为 `float` 元素而扰乱
 
 - IFC 应用：
 
-  - 水平居中：当一个块要在环境中水平居中时，设置其为 inline-block 则会在外层产生 IFC，通过 text-align 则可以使其水平居中。
-  - 垂直居中：创建一个 IFC，用其中一个元素撑开父元素的高度，然后设置其 vertical-align:middle，其他行内元素则可以在此父元素下垂直居中。
+  - 水平居中：当一个块要在环境中水平居中时，设置其为 `inline-block` 则会在外层产生 `IFC`，通过 `text-align` 则可以使其水平居中。
+  - 垂直居中：创建一个 `IFC`，用其中一个元素撑开父元素的高度，然后设置其 `vertical-align:middle`，其他行内元素则可以在此父元素下垂直居中。
 
 **GFC（GrideLayout formatting contexts）：网格布局格式化上下文**
 
-当一个元素设置 display 值为 grid 的时候，此元素将会获得一个独立的渲染区域，我们可以通过在网格容器上定义网格定义航和网格定义列属性各在网格项目上定义网格航和网格列为每一个网格项目定义位置和空间。
+当一个元素设置 `display` 值为 `grid` 的时候，此元素将会获得一个独立的渲染区域，我们可以通过在网格容器上定义网格定义航和网格定义列属性各在网格项目上定义网格航和网格列为每一个网格项目定义位置和空间。
 
 - GFC 应用：
   - GridLayout 控制行列，控制对齐
 
 **FFC（Flex formatting contexts）:自适应格式上下文**
-display 值为 flex 或者 inline-flex 的元素将会生成自适应容器（flex container）。
+`display` 值为 `flex` 或者 `inline-flex` 的元素将会生成自适应容器（flex container）。
 
 ### 3. 层叠上下文
 
@@ -99,7 +99,7 @@ display 值为 flex 或者 inline-flex 的元素将会生成自适应容器（fl
 
 - 通过增加伪元素清楚浮动
   - :after / <br> : clear: both
-- 创建父级 BFC
+- 创建父级 `BFC`
 - 父级设置高度
 
 ### 7. link 与@import 的区别
