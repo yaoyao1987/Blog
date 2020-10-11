@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="message" />
+      <div v-html="msg"></div>
+      <div>{{ message }}</div>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+      </ul>
+      <div>{{getNewMessage}}</div>
+      <button v-on:click="change">reverse</button>
+    </div>
+    <script type="module">
+      import MVVM from "./mvvm.js";
+      var app = new MVVM({
+        el: "#app",
+        data: {
+          message: "Hello Vue!",
+          msg: "<div title='手写mvvm'>手写mvvm</div>",
+        },
+        computed: {
+          getNewMessage() {
+            return this.message + " wow";
+          },
+        },
+        methods: {
+          change() {
+            this.message = "更新操作";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
