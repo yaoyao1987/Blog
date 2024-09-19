@@ -48,3 +48,14 @@ const changeCoincidePoint = (location: Address['location'], num: number, length:
     lat: lat + LAT * Math.sin(radians)
   }
 }
+
+const setCricleBestViewport =  (point: Address['location'], radius: string, map: any, bMap: any) => {
+  let zoom = 20
+  let num = 20
+  while(num < +radius) {
+    num = num * 2
+    zoom--
+  }
+
+  map.centerAndZoom(new bMap.Point(point?.lng, point?.lat), zoom)
+}
